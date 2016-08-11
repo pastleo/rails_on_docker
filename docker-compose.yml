@@ -1,0 +1,15 @@
+version: '2'
+services:
+  build: &slideshow
+    image: chgu82837/s9-pastpress
+    volumes:
+     - .:/workspace
+    entrypoint: ["slideshow", "b", "-t", "pastpress"]
+  new:
+    <<: *slideshow
+    entrypoint: []
+    command: ["slideshow", "n" ,"-t", "pastpress"]
+  bash:
+    <<: *slideshow
+    entrypoint: []
+    command: ["bash"]
