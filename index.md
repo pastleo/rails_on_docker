@@ -13,7 +13,13 @@ author: PastLeo @ 5xRuby
     border-radius: 10px;
 }
 
+#impress code {
+  font-family: 'Source Code Pro';
+}
+
 %end
+
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:700' rel='stylesheet' type='text/css'>
 
 %%%%%%%%%%%%%%%%%%%
 %% occupation of scale=1:
@@ -73,268 +79,149 @@ author: PastLeo @ 5xRuby
 !SLIDE unclickable x=0 y=-7000 scale=10
 
 %%%%%%%%%%%%%%%
-!SLIDE picture center x=-12000 y=-7000 scale=10
+!SLIDE picture center x=0 y=-12500 scale=5
 
 ![docker-in-vm](http://i.imgur.com/cYCs6e0.jpg)
 
 ### Installation
 
 %%%%%%%%%%%%%%%
-!SLIDE x=-12000 y=-7000 z=5000 scale=5
+!SLIDE x=0 y=-12500 z=-7500 scale=5
 
 ### Installation
 
 #### [官方網站](https://www.docker.com/)
 
 * For Mac or Windows
-  * docker native
-  * docker toolbox
+  * [docker native](https://www.docker.com/products/docker)
+  * [docker toolbox](https://www.docker.com/products/docker-toolbox)
 * Linux
   * [https://get.docker.com](https://get.docker.com)
 
-![docker-in-vm](http://i.imgur.com/cYCs6e0.jpg)
-
-### Installation
-
 %%%%%%%%%%%%%%%
-!SLIDE picture center x=-7700 y=-9500 scale=4
-
-![funny-sudo](http://i.stack.imgur.com/m1rI9.png)
-
-### 權限管理
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=-8500 scale=3
-
-## 超人身份
-
-#### `su <user>` / `sudo <command>` / `sudo su` / `visudo`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=-8000 scale=3
-
-## +人
-
-#### `useradd <user_name>` / `adduser <user_name>`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=-7500 scale=3
-
-## [修改人(?](http://linux.vbird.org/linux_basic/0410accountmanager.php#usermod)
-
-#### `usermod <option> <user_name>`
-
-#### 把人加到群組裡面: `usermod -aG docker <user_name>`
-
-%%%%%%%%%%%%%%%
-!SLIDE picture center x=-7700 y=-5750 scale=4
-
-![funny-file-permission](http://i.imgur.com/upsemfw.jpg)
-
-### 檔案權限
-
-##### `ls -l` => `drwxr-xr-x pastleo staff`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=-4500 scale=3
-
-## [把東西送人](http://linux.vbird.org/linux_basic/0210filepermission.php#chown)
-
-#### `chown [-Rv] <user>[:<group>] <path>`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=-4000 scale=3
-
-## [可以做啥](http://linux.vbird.org/linux_basic/0210filepermission.php#chmod)
-
-#### `chmod [-Rv] <mod> <path>`
-
-%%%%%%%%%%%%%%%
-!SLIDE picture center x=-16300 y=-9500 scale=4
-
-![htop](http://i.imgur.com/qZcM1SL.png)
-
-### 一些系統狀態
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=-9350 scale=3
-
-## 工作管理員
-
-#### `ps` / `ps <-ef|aux> | grep <program>` / [more](http://www.thegeekstuff.com/2011/04/ps-command-examples/)
-
-#### `kill [-9] <pid>` / `killall <program>`
-
-#### `top` / `htop`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=-8450 scale=3
-
-## 背景服務的控制
-
-#### [`systemctl [status|start|stop|enable|disable] <service>`](http://luyaku.pixnet.net/blog/post/183362281-c6.5%E8%88%87c7%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B7%AE%E7%95%B0%E8%88%87-systemctl-%E7%9A%84%E4%BB%8B%E7%B4%B9)
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=-7950 scale=3
-
-## 網路狀態
-
-#### `ifconfig` (`ipconfig` on windows)
-
-#### 有哪些程式在監聽 Port: `netstat -tenlp` 
-
-%%%%%%%%%%%%%%%
-!SLIDE picture center x=-16300 y=-6000 scale=4
-
-![apt-get-wife](http://i.imgur.com/X3SNyeB.png)
-
-### 安裝軟體 (for ubuntu and debian)
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=-5200 scale=3
-
-## 使用安裝包
-
-#### `dpkg -i foo.deb` / [dpkg usage](http://maxubuntu.blogspot.tw/2010/04/dpkg.html)
-
-#### 到下張投影片你就會忘了這件事了
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=-4500 scale=3
-
-## `apt-get <action> <options>` 
-
-#### `apt-get update`
-
-#### `apt-get cache search ...` (or google) / `apt-get install ...`
-
-#### `apt-get remove ...`
-
-#### `apt-get upgrade [...]`
-
-%%%%%%%%%%%%%%%
-!SLIDE unclickable center x=-12000 y=-7000 scale=10
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-12000 y=-14000 scale=10
-
-### 關於套件管理程式
-
-#### 他們都大同小異，以下我把我所知道的列出來
-
-* Linux systems:
-    * ubuntu, debian: `apt-get` / `aptitude`
-    * centos, redhat: `yum`
-* 3rd-party made for Non-Linux system:
-    * OSX: [`brew`](http://brew.sh/)
-    * Windows: [`choco`](https://chocolatey.org/)
-
-%%%%%%%%%%%%%%%
-!SLIDE center x=-12000 y=-14000 z=-12500 scale=10
-
-### for Programming languages
-
-* Python: `pip`，通常伴隨 Python 一同安裝
-* Ruby: `gem`，通常伴隨 Ruby 一同安裝
-* NodeJs: `npm`，通常伴隨 NodeJS 一同安裝
-* PHP: `composer`，和以上三者比較不同，[來這取得](https://getcomposer.org)
-
-![npm-so-long](http://i.imgur.com/hwvxiO1.jpg)
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture x=12000 y=-7000 scale=10
-
-![docker](http://i.imgur.com/afEjiqM.png)
-
-#### Docker
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture x=16300 y=-9000 scale=4
-
-![docker-in-vm](http://i.imgur.com/cYCs6e0.jpg)
-
-### Installation
-
-%%%%%%%%%%%%%%%
-!SLIDE x=16300 y=-7700 scale=3
-
-## [https://get.docker.com/](https://get.docker.com/)
-
-#### [其他作業系統](https://docs.docker.com/engine/installation/)
-
-#### Docker 是 client-server 的，在 OSX 跟 Windows 上只有 client
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture x=16300 y=-6000 scale=4
+!SLIDE center picture x=-6000
 
 ![hello-world](http://i.imgur.com/7YISj2P.jpg)
 
-### Try `docker` / `docker run hello-world`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=16300 y=-4800 scale=3
-
-### 體驗一下它的威力
-
-#### `docker run -it centos`
-
-#### `docker run -it node`
-
-#### `docker run [options] <image>[:version] [command]`
-
-#### [DockerHub](https://hub.docker.com/explore/)
-
-%%%%%%%%%%%%%%%
-!SLIDE x=7700 y=-10000 scale=4
-
-## 更多 docker 指令
-
-%%%%%%%%%%%%%%%
-!SLIDE x=7700 y=-9500 scale=3
-
-## 看 Docker 是不是好的
-
-#### `docker info`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=7700 y=-8500 scale=3
-
-### Containers / Image
-
-* `exec` / `run` 的差異
-* containers:
-    * `docker ps [-l]`
-    * `docker kill <container>`
-    * `docker rm <container>`
-    * `docker commit <container> <new_image>`
-* images:
-    * `docker images`
-    * `docker rmi <image>`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=9000 y=-8500 scale=3
-
-### / Resource
-
-* resources:
-    * `docker network ...`
-    * `docker volume ...`
-
-%%%%%%%%%%%%%%%
-!SLIDE picture center x=7700 y=-6250 scale=3
-
-![serious-pusheen](http://i.giphy.com/V2FgIJRv6Ykq4.gif)
-
-#### 來點認真的
+### Hello Docker!
 
 ```
-git clone https://github.com/NCHUIT/104B_devOps_docker.git
+docker run hello-world
 ```
 
-#### 接下來各位會在 `practice` 內操作
+%%%%%%%%%%%%%%%
+!SLIDE x=-7500
+
+## What the hell just happened?
+
+%%%%%%%%%%%%%%%
+!SLIDE center picture x=-9000
+
+![ruby](http://i.imgur.com/XjopV7U.png)
+
+### 外帶 ruby
+
+```
+docker pull ruby
+```
+
+%%%%%%%%%%%%%%%
+!SLIDE x=-10500
+
+## 驗貨一下
+
+```
+docker run -it ruby
+```
+
+%%%%%%%%%%%%%%%
+!SLIDE x=-12000
+
+## 我要不同版本的
+
+### [Dockerhub](https://hub.docker.com/)
+
+### [Ruby on dockerhub](https://hub.docker.com/_/ruby/)
+
+%%%%%%%%%%%%%%%
+!SLIDE x=-13500
+
+### docker run 參數
+
+```
+docker run [options] image[:version] [command]
+```
+
+* `-it` : interactive mode
+* `-v host_path:container_path` : sharing volume
+* `-p host_port:container_port` : exposing ports
+* `docker run --help` to know more...
+
+%%%%%%%%%%%%%%%
+!SLIDE x=-15000
+
+## Let's Bootstrap a rails project
+
+#### 練習看看
+
+%%%%%%%%%%%%%%%
+!SLIDE x=-16500
+
+## Useful docker commands
+
+#### `ps [-l|-a]`, `kill`, `rm`
+
+#### There are a lot more commands, just ask docker: `docker`
+
+%%%%%%%%%%%%%%%
+!SLIDE unclickable x=-9000 rotate-y=30 scale=6
+
+%%%%%%%%%%%%%%%
+!SLIDE center picture x=6000
+
+![image](http://i.imgur.com/EY96Pon.png)
+
+### How a image is created?
+
+%%%%%%%%%%%%%%%
+!SLIDE x=7500
+
+## Commit! (Snapshot)
+
+#### `docker commit container_id [image_name]` 
+
+#### `git` 表示被抄了
+
+%%%%%%%%%%%%%%%
+!SLIDE x=9000
+
+## image related commands
+
+#### `images`, `rmi`
+
+%%%%%%%%%%%%%%%
+!SLIDE x=10500
+
+## Automation?
+
+#### `Dockerfile` => `docker build`
+
+%%%%%%%%%%%%%%%
+!SLIDE x=12000
+
+### Let's create a Dockerfile for the rails project just created
+
+* `FROM image` : base image
+* `RUN command` : command to run
+* `WORKDIR /path` : absolute path to `cd`
+* `COPY|ADD src des` : add file from context to image
+* `CMD` : set default `docker run` command
 
 %%%%%%%%%%%%%%%
 !SLIDE x=7700 y=-5000 scale=3
+
+## The onbuild version
+
 
 ## 來架個 [聊天室 Chat](http://socket.io/demos/chat/)
 
