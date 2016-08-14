@@ -14,12 +14,11 @@ author: PastLeo @ 5xRuby
 }
 
 #impress code {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', monospace;
 }
 
 %end
 
-<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:700' rel='stylesheet' type='text/css'>
 
 %%%%%%%%%%%%%%%%%%%
 %% occupation of scale=1:
@@ -40,6 +39,8 @@ author: PastLeo @ 5xRuby
 
 %%%%%%%%%%%%%%%
 !SLIDE x=0 y=0 scale=10
+
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:700" rel="stylesheet">
 
 ## Rails on Docker
 
@@ -181,7 +182,7 @@ docker run [options] image[:version] [command]
 
 ![image](http://i.imgur.com/EY96Pon.png)
 
-### How a image is created?
+### How does a image being created?
 
 %%%%%%%%%%%%%%%
 !SLIDE x=7500
@@ -217,193 +218,145 @@ docker run [options] image[:version] [command]
 * `COPY|ADD src des` : add file from context to image
 * `CMD` : set default `docker run` command
 
-%%%%%%%%%%%%%%%
-!SLIDE x=7700 y=-5000 scale=3
-
-## The onbuild version
-
-
-## 來架個 [聊天室 Chat](http://socket.io/demos/chat/)
-
-1. [Node on Dockerhub](https://hub.docker.com/_/node/) 
-2. 建立 `Dockerfile`, [Docs](https://docs.docker.com/engine/reference/builder/)
-3. `docker build -t chat .` (`docker build --help` to see more)
-4. `docker run -p 80:3000 chat`
+[More about Dockerfile](https://docs.docker.com/engine/reference/builder/)
 
 %%%%%%%%%%%%%%%
-!SLIDE unclickable x=12000 y=-7000 scale=10
+!SLIDE x=13500
+
+## Build it!
+
+```
+docker build -t {image_name} {path_to_context}
+```
 
 %%%%%%%%%%%%%%%
-!SLIDE picture center x=-12000 y=3000 scale=10
+!SLIDE x=15000
+
+## Filesystem that stores changes
+
+#### Shared Layers between images
+
+#### Cached when build
+
+%%%%%%%%%%%%%%%
+!SLIDE x=16500
+
+## Push! (Upload)
+
+```
+docker push {image}
+```
+
+#### `git` 再次表示被抄了
+
+%%%%%%%%%%%%%%%
+!SLIDE unclickable x=9000 rotate-y=-30 scale=6
+
+%%%%%%%%%%%%%%%
+!SLIDE picture center x=0 y=5000
 
 ![docker-compose](http://i.imgur.com/QY7Mav1.png)
 
-### Docker-compose
-
-#### 使用 Docker 的好幫手
+### Multiple Containers and More automation
 
 %%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=500 scale=4
+!SLIDE x=0 y=5700
 
-## Installation
+## What if I need mysql/postgresql?
 
-#### [Official Installation Guide](https://docs.docker.com/compose/install/)
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=1750 scale=3
-
-### Docker-compose 大致使用流程
-
-1. 撰寫 `docker-compose.yml`
-2. `docker-compose config`, 確保 `docker-compose.yml` 是好der
-3. `build`
-4. `up [service]` / `run <service>`
-5. `logs`
-6. `ps` / `kill [service]` / `rm [-avf]`
+```
+RUN apt-get install postgresql...?
+```
 
 %%%%%%%%%%%%%%%
-!SLIDE x=-7700 y=4000 scale=3
+!SLIDE x=0 y=6400
 
-### 讓 Chat 更容易地使用吧
+### docker-compose
 
-#### 建立 `docker-compose.yml`, 要用就用新版吧 (2):
+#### No more annoying parameters, more automations
+
+#### Multiple containers at the same time
+
+#### Link containers together so they can 'compose'
+
+#### [Installation](https://docs.docker.com/compose/install/)
+
+%%%%%%%%%%%%%%%
+!SLIDE x=0 y=7100
+
+### The `docker-compose.yml`
 
 ```
 version: '2'
 services:
   services_1:
-    ...設定值...
-```
-
-#### [頗多頗複雜的文件](https://docs.docker.com/compose/compose-file/)
-
-#### `docker-compose up chat`
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture x=-16300 y=1500 scale=4
-
-![wordpress](http://i.imgur.com/Chf2yZ7.png)
-
-### 用 Docker 架設 Wordpress
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=2200 scale=3
-
-## [Dockerhub 上面可是有的](https://hub.docker.com/_/wordpress/)
-
-#### Wordpress 會用到 mysql (mariadb), docker-compose 就很有用了
-
-#### `docker-compose up [-d] wordpress`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=3000 scale=3
-
-## `command` / `entrypoint` 差異
-
-#### `docker-compose run <service> [command_or_args]` 的 `[command_or_args]` 會接在 `entrypoint` 之後
-
-%%%%%%%%%%%%%%%
-!SLIDE x=-16300 y=3900 scale=3
-
-## 來做個資料庫備份吧
-
-#### 直接在 `docker-compose` 裡頭加上兩個 one-off command service
-
-#### 需要把 container 跟 host 檔案系統打通，透過 `volumes`
-
-%%%%%%%%%%%%%%%
-!SLIDE unclickable x=-12000 y=3000 scale=10
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture center x=12000 y=3000 scale=10
-
-![nginx](http://i.imgur.com/UYHOARe.png)
-
-### Nginx
-
-#### 來幫我們做 vhost
-
-%%%%%%%%%%%%%%%
-!SLIDE x=16300 y=1500 scale=4
-
-### 我們來用 docker 來跑 nginx 吧XDD
-
-* [Nginx on dockerhub](https://hub.docker.com/_/nginx/)
-* 先來個 one-off service 把 `conf.d` 複製出來
-  * 測試 `conf.d` 是否正確的 one-off service `test`: `command: nginx -t`
-* 用 `volumes` 把 `conf.d` 內外打通
-* `docker-compose up nginx`
-
-%%%%%%%%%%%%%%%
-!SLIDE x=16300 y=4500 scale=4
-
-### 建立我們自己的 vhost
-
-* 建立我們的靜態網站 `web` 資料夾，並且打通內外打通
-* 複製 nginx 的 `default.conf` 來改
-  * `listen <port> [default_server]`
-  * `server_name <vhost_domain>`
-  * `location` => `root`, `index`, `deny`
-* DNS (cloudflare / `/etc/hosts`) 把 domain 指向你的伺服器
-* `docker-compose up nginx`
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture x=7700 y=1500 scale=4
-
-### 把 chat / wordpress 跟 nginx 串在一起
-
-* 利用 `docker network` 以及 nginx 的 `reverse-proxy`
-* `restart: always`
-* [我們自己建立 network 讓 docker-compose 來使用](https://docs.docker.com/compose/networking/#using-a-pre-existing-network)
-* 繼續複製 `default.conf` 來改
-
-![apache-behind-nginx](http://i.imgur.com/iJfhQ1P.jpg)
-
-%%%%%%%%%%%%%%%
-!SLIDE center picture slide x=7700 y=1500 z=-5000 scale=3
-
-### Proxy pass settings
-
-```
-# For websocket
-proxy_http_version 1.1;
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection "upgrade";
-
-# Wordpress required headers
-proxy_set_header X-Real-IP  $remote_addr;
-proxy_set_header X-Forwarded-For $remote_addr;
-proxy_set_header Host $host;
-proxy_redirect off;
-
-# Reverse-proxy
-proxy_pass http://<the_magic_service_name>[:port];
+    ...services_settings...
+  services_2:
+    ...services_settings...
 ```
 
 %%%%%%%%%%%%%%%
-!SLIDE center picture x=7700 y=4500 scale=4
+!SLIDE x=0 y=7800
 
-### 啟動！
+### Service settings
 
-#### `cd chat; docker-compose up -d chat; cd ..`
+* What image to run
+  * `image: {image_name}`
+  * `build: {path/to/context}`
+* `ports`, `volumes`
+* `command`
+* `depends_on`, `environment`
 
-#### `cd wordpress; docker-compose up -d wordpress; cd ..`
-
-#### `cd nginx; docker-compose up -d nginx; cd ..`
-
-![goooo](http://i.giphy.com/ZJyn5HEzW7THO.gif)
-
-%%%%%%%%%%%%%%%
-!SLIDE unclickable x=12000 y=3000 scale=10
+#### [More settings](https://docs.docker.com/compose/compose-file/)
 
 %%%%%%%%%%%%%%%
-!SLIDE center picture x=0 y=7000 scale=10
+!SLIDE x=0 y=8500
 
-### 感謝大家，大家辛苦惹:w
+## Let's use docker-compose to compose rails and postgres!
 
-#### 快速連結： [DevOps of Linux (Debian)](#/step-7) / [Docker](#/step-25) / [docker-compose](#/step-37) / [Nginx](#/step-46)
+%%%%%%%%%%%%%%%
+!SLIDE x=0 y=9200
 
-![nyan](http://i.giphy.com/Fo2s6HabbWVna.gif)
+### Up!
+
+* `config` to check if is correct
+* `build`
+* `up [service]` / `run {service}`
+* `logs`
+* `ps`, `kill`, `rm`
+
+%%%%%%%%%%%%%%%
+!SLIDE x=0 y=9900
+
+## One more thing
+
+#### One-off command service
+
+%%%%%%%%%%%%%%%
+!SLIDE x=0 y=9900 z=-1000
+
+## `entrypoint`
+
+#### Use this to add database dump and restore task
+
+%%%%%%%%%%%%%%%
+!SLIDE unclickable x=0 y=6750 rotate-x=30 scale=6
+
+%%%%%%%%%%%%%%%
+!SLIDE center x=0 y=0 scale=10
+
+### Thanks you for listening
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+#### Indexes
+
+[Install](#/step-7), [Hello Docker](#/step-9), [Docker Images](#/step-18), [Compose](#/step-27)
 
 %% The End
 %%%%%%%%%%%%%%%

@@ -24,7 +24,6 @@
     * Dockerfile -> docker build
         * create Dockerfile for the rails project just created
             * `FROM`, `RUN`, `WORKDIR`, `COPY` / `ADD`, `CMD`
-        * the onbuild version
         * the cache mechanism
     * docker push (git push ..?)
 * I have a mysql/postgresql... 
