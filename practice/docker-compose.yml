@@ -1,9 +1,27 @@
 version: '2'
 services:
-  rails:
+  rails: &rails
     build: .
     volumes:
      - .:/usr/src/app
     ports:
      - '3000:3000'
-    command: rails s -b 0.0.0.0
+    entrypoint: ['rails']
+    command: ['s', '-b', '0.0.0.0']
+    depends_on:
+     - db
+    environment: &shared_env
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      POSTGRES_DB: rails-on-docker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+  rake:
+    <<: *rails
+    entrypoint: ['rake']
+    command: []
+  db: &db
+    image: postgres
+    environment:
+      <<: *shared_env
+

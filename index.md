@@ -271,15 +271,14 @@ RUN apt-get install postgresql...?
 %%%%%%%%%%%%%%%
 !SLIDE x=0 y=6400
 
-### docker-compose
+### `docker-compose`
 
-#### No more annoying parameters, more automations
-
-#### Multiple containers at the same time
-
-#### Link containers together so they can 'compose'
-
-#### [Installation](https://docs.docker.com/compose/install/)
+* Features
+  * No more annoying parameters, more automations
+  * Multiple containers at the same time
+  * Link containers together so they can 'compose'
+* [How to install](https://docs.docker.com/compose/install/)
+  * docker toolbox or native have already installed for you
 
 %%%%%%%%%%%%%%%
 !SLIDE x=0 y=7100
@@ -314,6 +313,8 @@ services:
 
 ## Let's use docker-compose to compose rails and postgres!
 
+#### [Postgresql on dockerhub](https://hub.docker.com/_/postgres/)
+
 %%%%%%%%%%%%%%%
 !SLIDE x=0 y=9200
 
@@ -330,22 +331,22 @@ services:
 
 ## One more thing
 
-#### One-off command service
+#### One-off command, eg. `rails c`, `rake ...`
 
 %%%%%%%%%%%%%%%
-!SLIDE x=0 y=9900 z=-1000
+!SLIDE x=0 y=9900 z=-1250
 
 ## `entrypoint`
 
-#### Use this to add database dump and restore task
+#### Use this to make rails allow other commands
 
 %%%%%%%%%%%%%%%
 !SLIDE unclickable x=0 y=6750 rotate-x=30 scale=6
 
 %%%%%%%%%%%%%%%
-!SLIDE center x=0 y=0 scale=10
+!SLIDE center x=0 y=0 scale=10 z=1
 
-### Thanks you for listening
+### Thank you for listening
 
 <br />
 <br />
