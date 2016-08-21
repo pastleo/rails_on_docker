@@ -150,7 +150,7 @@ docker run -it ruby
 ### docker run 參數
 
 ```
-docker run [options] image[:version] [command]
+docker run [options] image[:tag] [command]
 ```
 
 * `-it` : interactive mode
@@ -215,7 +215,7 @@ docker run [options] image[:version] [command]
 * `FROM image` : base image
 * `RUN command` : command to run
 * `WORKDIR /path` : absolute path to `cd`
-* `COPY|ADD src des` : add file from context to image
+* `COPY|ADD src des` : add file from context to image, [difference between COPY & ADD](http://stackoverflow.com/questions/24958140/docker-copy-vs-add)
 * `CMD` : set default `docker run` command
 
 [More about Dockerfile](https://docs.docker.com/engine/reference/builder/)
