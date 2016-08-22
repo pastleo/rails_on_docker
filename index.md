@@ -82,7 +82,7 @@ author: PastLeo @ 5xRuby
 %%%%%%%%%%%%%%%
 !SLIDE picture center x=0 y=-12500 scale=5
 
-![docker-in-vm](http://i.imgur.com/cYCs6e0.jpg)
+![docker-in-vm](http://i.imgur.com/JpuQ4Qr.png)
 
 ### Installation
 
@@ -111,9 +111,11 @@ docker run hello-world
 ```
 
 %%%%%%%%%%%%%%%
-!SLIDE x=-7500
+!SLIDE center picture x=-7500
 
-## What the hell just happened?
+![cloud2image2container](http://i.imgur.com/EzKrUy9.png)
+
+### What the hell just happened?
 
 %%%%%%%%%%%%%%%
 !SLIDE center picture x=-9000
@@ -180,18 +182,18 @@ docker run [options] image[:tag] [command]
 %%%%%%%%%%%%%%%
 !SLIDE center picture x=6000
 
-![image](http://i.imgur.com/EY96Pon.png)
+![image](http://i.imgur.com/zzTf9e7.png)
 
 ### How does a image being created?
 
 %%%%%%%%%%%%%%%
-!SLIDE x=7500
+!SLIDE center picture x=7500
 
-## Commit! (Snapshot)
+![image](http://i.imgur.com/knYQxav.png)
+
+### Commit! (Snapshot)
 
 #### `docker commit container_id [image_name]` 
-
-#### `git` 表示被抄了
 
 %%%%%%%%%%%%%%%
 !SLIDE x=9000
@@ -201,9 +203,11 @@ docker run [options] image[:tag] [command]
 #### `images`, `rmi`
 
 %%%%%%%%%%%%%%%
-!SLIDE x=10500
+!SLIDE center picture x=10500
 
-## Automation?
+![docker-build](http://i.imgur.com/1HvxbbG.png)
+
+### Automation?
 
 #### `Dockerfile` => `docker build`
 
@@ -239,15 +243,15 @@ docker build -t {image_name} {path_to_context}
 #### Cached when build
 
 %%%%%%%%%%%%%%%
-!SLIDE x=16500
+!SLIDE center picture x=16500
 
-## Push! (Upload)
+![docker-build](http://i.imgur.com/wMBZrst.png)
+
+### Push! (Upload)
 
 ```
 docker push {image}
 ```
-
-#### `git` 再次表示被抄了
 
 %%%%%%%%%%%%%%%
 !SLIDE unclickable x=9000 rotate-y=-30 scale=6
@@ -255,7 +259,7 @@ docker push {image}
 %%%%%%%%%%%%%%%
 !SLIDE picture center x=0 y=5000
 
-![docker-compose](http://i.imgur.com/QY7Mav1.png)
+![docker-compose](http://i.imgur.com/Ot2kx3C.png)
 
 ### Multiple Containers and More automation
 
